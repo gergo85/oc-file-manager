@@ -1,0 +1,24 @@
+<div class="scoreboard">
+    <?php
+    use System\Classes\PluginManager;
+    use Backend\Models\UserPreferences;
+
+    $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
+
+    if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors')):
+    ?>
+    <script type="text/javascript">
+    $().ready(function() {
+        $('#elfinder').elfinder({
+            <?php if ($preferences['locale'] != 'en' && is_file('plugins/anandpatel/wysiwygeditors/public/js/i18n/elfinder.'.$preferences['locale'].'.js')): ?>
+            lang: '<?= $preferences['locale'] ?>',
+            <? endif; ?>
+            url: '<?= URL::action('Barryvdh\Elfinder\ElfinderController@showConnector') ?>'
+        }).elfinder('instance');
+    });
+    </script>
+    <div id="elfinder"></div>
+    <?php else: ?>
+    <p><?= e(trans('indikator.filemanager::lang.error.text')) ?> <a href="https://octobercms.com/plugin/anandpatel-wysiwygeditors" target="_blank"><?= e(trans('indikator.filemanager::lang.error.plugin')) ?></a></p>
+    <?php endif; ?>
+</div>

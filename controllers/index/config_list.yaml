@@ -1,0 +1,7 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+title: indikator.filemanager::lang.plugin.name
+list: @/plugins/indikator/filemanager/models/index/columns.yaml
+modelClass: Indikator\Filemanager\Models\Index
