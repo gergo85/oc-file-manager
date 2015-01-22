@@ -1,0 +1,137 @@
+<?php
+
+use Backend\Models\UserPreferences;
+$preferences = UserPreferences::forUser()->get('backend::backend.preferences');
+
+function fm_stat2($folder = 'uploads/public')
+{
+    $attr['size_audio'] = $attr['size_archive'] = $attr['size_code'] = $attr['size_doc'] = $attr['size_image'] = $attr['size_other'] = $attr['size_prezi'] = $attr['size_table'] = $attr['size_text'] = $attr['size_video'] = 0;
+    $attr['file_audio'] = $attr['file_archive'] = $attr['file_code'] = $attr['file_doc'] = $attr['file_image'] = $attr['file_other'] = $attr['file_prezi'] = $attr['file_table'] = $attr['file_text'] = $attr['file_video'] = 0;
+
+    $elementents = scandir($folder);
+    foreach ($elementents as $element) {
+        if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb') {
+            if (filetype($folder.'/'.$element) == 'dir') {
+                $attr = fm_stat2($folder.'/'.$element);
+            }
+
+            else {
+                $type = fm_type(substr(strrchr($element, '.'), 1));
+                $attr['size_'.$type] += filesize($folder.'/'.$element);
+                $attr['file_'.$type]++;
+            }
+        }
+    }
+
+    return $attr;
+}
+
+function fm_type($extension = 'txt')
+{
+    $types = array(
+        'audio'   => array('aac', 'ac3',  'aif',  'm3a',  'm4a',  'm4b',  'mka',  'mp1', 'mp2',  'mp3',  'ogg', 'oga', 'ram', 'wav', 'wma'),
+        'archive' => array('bz2', 'cab',  'gz',   'rar',  'tar',  'tgz',  'zip',  '7z'),
+        'code'    => array('css', 'htm',  'html', 'php',  'js',   'c',    'c++'),
+        'doc'     => array('doc', 'docx', 'docm', 'dotm', 'odt',  'pdf',  'rtf',  'wp',  'wpd'),
+        'image'   => array('bmp', 'gif',  'ico',  'jpg',  'jpeg', 'png',  'psd',  'raw', 'tif',  'tiff'),
+        'prezi'   => array('ppt', 'pptx', 'pptm', 'pps',  'ppsx', 'ppsm', 'sldx', 'sldm'),
+        'table'   => array('ods', 'xls',  'xlsx', 'xlsm', 'xlsb'),
+        'text'    => array('asc', 'csv',  'tsv',  'txt',  'xml'),
+        'video'   => array('avi', 'divx', 'dv',   'flv',  'm4v',  'mkv',  'mov',  'mp4', 'mpeg', 'mpg',  'qt',  'rm',  'swf', 'vob', 'wmv')
+    );
+
+    foreach ($types as $type => $extensions) if (in_array($extension, $extensions)) return $type;
+    return 'other';
+}
+
+function fm_size2($size = 0)
+{
+    if ($size > 0) {
+        $name = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
+        $common = array('au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw');
+
+        for ($i = 0; $size >= 1024; $i++) {
+            $size /= 1024;
+            if ($i < 1) $size = round($size, 0);
+            else $size = round($size, 1);
+        }
+
+        global $preferences;
+        if (!in_array($preferences['locale'], $common)) $size = str_replace('.', ',', $size);
+        return $size.' '.$name[$i];
+    }
+
+    else {
+        $size = '0 '.'B';
+    }
+
+    return $size;
+}
+
+$stat = fm_stat2();
+
+?>
+<div class="report-widget">
+    <h3 style="margin-bottom:5px;"><?= e(trans($this->property('title'))) ?></h3>
+    <?php if ($this->property('audio')): ?>
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
+        <h4><?= e(trans('indikator.filemanager::lang.widget.type.audio')) ?></h4>
+        <p class="text-center"><?= fm_size2($stat['size_audio']) ?> (<?= $stat['file_audio'] ?>)</p>
+    </div>
+    <?php endif ?>
+    <?php if ($this->property('archive')): ?>
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
+        <h4><?= e(trans('indikator.filemanager::lang.widget.type.archive')) ?></h4>
+        <p class="text-center"><?= fm_size2($stat['size_archive']) ?> (<?= $stat['file_archive'] ?>)</p>
+    </div>
+    <?php endif ?>
+    <?php if ($this->property('code')): ?>
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
+        <h4><?= e(trans('indikator.filemanager::lang.widget.type.code')) ?></h4>
+        <p class="text-center"><?= fm_size2($stat['size_code']) ?> (<?= $stat['file_code'] ?>)</p>
+    </div>
+    <?php endif ?>
+    <?php if ($this->property('doc')): ?>
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
+        <h4><?= e(trans('indikator.filemanager::lang.widget.type.doc')) ?></h4>
+        <p class="text-center"><?= fm_size2($stat['size_doc']) ?> (<?= $stat['file_doc'] ?>)</p>
+    </div>
+    <?php endif ?>
+    <?php if ($this->property('image')): ?>
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
+        <h4><?= e(trans('indikator.filemanager::lang.widget.type.image')) ?></h4>
+        <p class="text-center"><?= fm_size2($stat['size_image']) ?> (<?= $stat['file_image'] ?>)</p>
+    </div>
+    <?php endif ?>
+    <?php if ($this->property('other')): ?>
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
+        <h4><?= e(trans('indikator.filemanager::lang.widget.type.other')) ?></h4>
+        <p class="text-center"><?= fm_size2($stat['size_other']) ?> (<?= $stat['file_other'] ?>)</p>
+    </div>
+    <?php endif ?>
+    <?php if ($this->property('prezi')): ?>
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
+        <h4><?= e(trans('indikator.filemanager::lang.widget.type.prezi')) ?></h4>
+        <p class="text-center"><?= fm_size2($stat['size_prezi']) ?> (<?= $stat['file_prezi'] ?>)</p>
+    </div>
+    <?php endif ?>
+    <?php if ($this->property('table')): ?>
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
+        <h4><?= e(trans('indikator.filemanager::lang.widget.type.table')) ?></h4>
+        <p class="text-center"><?= fm_size2($stat['size_table']) ?> (<?= $stat['file_table'] ?>)</p>
+    </div>
+    <?php endif ?>
+    <?php if ($this->property('text')): ?>
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
+        <h4><?= e(trans('indikator.filemanager::lang.widget.type.text')) ?></h4>
+        <p class="text-center"><?= fm_size2($stat['size_text']) ?> (<?= $stat['file_text'] ?>)</p>
+    </div>
+    <?php endif ?>
+    <?php if ($this->property('video')): ?>
+    <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
+        <h4><?= e(trans('indikator.filemanager::lang.widget.type.video')) ?></h4>
+        <p class="text-center"><?= fm_size2($stat['size_video']) ?> (<?= $stat['file_video'] ?>)</p>
+    </div>
+    <?php endif ?>
+    <div style="clear:both;"></div>
+</div>

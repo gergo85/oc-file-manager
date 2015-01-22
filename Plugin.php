@@ -27,4 +27,18 @@ class Plugin extends PluginBase
             ]
         ];
     }
+
+    public function registerReportWidgets()
+    {
+        return [
+            'Indikator\Filemanager\ReportWidgets\Basic' => [
+                'label'   => 'indikator.filemanager::lang.widget.basic.label',
+                'context' => 'dashboard'
+            ],
+            'Indikator\Filemanager\ReportWidgets\Type' => [
+                'label'   => 'indikator.filemanager::lang.widget.type.label',
+                'context' => 'dashboard'
+            ]
+        ];
+    }
 }

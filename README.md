@@ -1,7 +1,7 @@
 ##File Manager plugin for October CMS
 Manage your files and folders via [elFinder](http://elfinder.org).
 
-### Main features
+###Main features
 * Multiple and Drag & Drop file upload
 * File copying / moving with Drag & Drop
 * Edit text files and resize images
@@ -11,7 +11,11 @@ Manage your files and folders via [elFinder](http://elfinder.org).
 * Directory selection history
 * Archives create / extract (zip, rar, etc.)
 * File and directory descriptions
-* Search files
+* Search files and folders
+
+###Widgets
+* Basic file statistics (number of folders and files, size of files)
+* File type statistics (number of files and size of files)
 
 ###Installation
 1. Go to the __Settings -> Updates__ page in Backend.
@@ -21,5 +25,5 @@ Manage your files and folders via [elFinder](http://elfinder.org).
 If you don't use the [Wysiwyg Editors](https://octobercms.com/plugin/anandpatel-wysiwygeditors) plugin, you need to install it.
 
 ###Roadmap
-* Add backend widget to dashboard.
-* Support other file managers.
+* Support [Responsive Filemanager](http://www.responsivefilemanager.com).
+* Change between public and private folders.
