@@ -29,5 +29,5 @@ If you don't use the [Wysiwyg Editors](https://octobercms.com/plugin/anandpatel-
 * Change between public and private folders.
 
 ###Credits
-* File manager: (elFinder)[https://github.com/Studio-42/elFinder]
+* File manager: [elFinder](https://github.com/Studio-42/elFinder)
 * Plugin icon: [Web App icons](http://icons8.com/web-app/new-icons/all)
