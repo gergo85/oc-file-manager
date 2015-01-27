@@ -41,12 +41,11 @@ function fm_size1($size = 0)
 
         global $preferences;
         if (!in_array($preferences['locale'], $common)) $size = str_replace('.', ',', $size);
+
         return $size.' '.$name[$i];
     }
 
-    else {
-        $size = '0 '.'B';
-    }
+    $size = '0 '.'B';
 
     return $size;
 }

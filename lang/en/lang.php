@@ -29,6 +29,7 @@ return [
             'table' => 'Table',
             'text' => 'Text',
             'video' => 'Video'
-        ]
+        ],
+        'pieces' => 'pieces'
     ]
 ];

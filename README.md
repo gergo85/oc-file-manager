@@ -12,6 +12,7 @@ Manage your files and folders via [elFinder](http://elfinder.org).
 * Archives create / extract (zip, rar, etc.)
 * File and directory descriptions
 * Search files and folders
+* Detailed file type statistics
 
 ###Widgets
 * Basic file statistics (number of folders and files, size of files)

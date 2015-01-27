@@ -29,6 +29,7 @@ return [
             'table' => 'Táblázat',
             'text' => 'Szöveg',
             'video' => 'Videó'
-        ]
+        ],
+        'pieces' => 'darab'
     ]
 ];
