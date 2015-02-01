@@ -32,5 +32,31 @@ return [
         ],
         'pieces' => '{0}pieces|{1}piece|[2,Inf]pieces',
         'limit' => 'Upload limit'
+    ],
+    'shortcuts' => [
+        'cut' => 'cut',
+        'copy' => 'copy',
+        'paste' => 'paste',
+        'delete' => 'delete',
+        'select' => 'select all',
+        'upload' => 'upload',
+        'info' => 'get info',
+        'search' => 'search',
+        'main_folder' => 'main folder',
+        'parent_folder' => 'parent folder',
+        'open' => 'open',
+        'view' => 'view',
+        'back' => 'back',
+        'forward' => 'forward',
+        'new_folder' => 'new folder',
+        'reload' => 'reload',
+        'download' => 'download',,
+        'rename' => 'rename',
+        'first_item' => 'first item',
+        'last_item' => 'last item',
+        'up' => 'UP',
+        'down' => 'DOWN',
+        'left' => 'LEFT',
+        'right' => 'RIGHT'
     ]
 ];

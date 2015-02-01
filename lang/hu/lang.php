@@ -13,8 +13,8 @@ return [
     'widget' => [
         'basic' => [
             'label' => 'Alapvető fájl statisztika',
-            'folders' => 'Mappák',
-            'files' => 'Fájlok',
+            'folders' => 'Mappa',
+            'files' => 'Fájl',
             'size' => 'Méret'
         ],
         'type' => [
@@ -32,5 +32,31 @@ return [
         ],
         'pieces' => 'darab',
         'limit' => 'Feltöltési korlát'
+    ],
+    'shortcuts' => [
+        'cut' => 'kivágás',
+        'copy' => 'másolás',
+        'paste' => 'beillesztés',
+        'delete' => 'törlés',
+        'select' => 'mind kijelölése',
+        'upload' => 'feltöltés',
+        'info' => 'tulajdonságok',
+        'search' => 'keresés',
+        'main_folder' => 'főmappa',
+        'parent_folder' => 'szülő mappa',
+        'open' => 'megnyitás',
+        'view' => 'előnézet',
+        'back' => 'vissza',
+        'forward' => 'előre',
+        'new_folder' => 'új mappa',
+        'reload' => 'újratöltés',
+        'download' => 'letöltés',
+        'rename' => 'átnevezés',
+        'first_item' => 'első elem',
+        'last_item' => 'utolsó elem',
+        'up' => 'FEL',
+        'down' => 'LE',
+        'left' => 'BALRA',
+        'right' => 'JOBBRA'
     ]
 ];

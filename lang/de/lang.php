@@ -32,5 +32,31 @@ return [
         ],
         'pieces' => 'stücke',
         'limit' => 'Grenze hochladen'
+    ],
+    'shortcuts' => [
+        'cut' => 'Schnitt',
+        'copy' => 'Kopie',
+        'paste' => 'Paste',
+        'delete' => 'Löschen',
+        'select' => 'Alle wählen',
+        'upload' => 'laden',
+        'info' => 'Info',
+        'search' => 'Suche',
+        'main_folder' => 'Hauptverzeichnis',
+        'parent_folder' => 'Geordneten Ordner',
+        'open' => 'Geöffnet',
+        'view' => 'Ansicht',
+        'back' => 'Zurück',
+        'forward' => 'Vorwärts',
+        'new_folder' => 'Neuen Ordner',
+        'reload' => 'Nachladen',
+        'download' => 'Download',
+        'rename' => 'Umbenennen',
+        'first_item' => 'Erste Element',
+        'last_item' => 'Letzte Artikel',
+        'up' => 'OBEN',
+        'down' => 'UNTER',
+        'left' => 'LINKS',
+        'right' => 'RECHT'
     ]
 ];

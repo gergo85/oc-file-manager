@@ -88,6 +88,10 @@ $stat = fm_stat();
 
 if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors')):
 
+function f($t) {
+    return $t;
+}
+
 ?>
     <div data-control="toolbar">
         <div class="scoreboard-item title-value">
@@ -143,6 +147,45 @@ if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors')):
     });
     </script>
     <div id="elfinder"></div>
+    <p><div class="row">
+        <div class="col-sm-4 col-md-3 col-lg-2">
+            CTRL + X &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.cut')) ?></strong><br />
+            CTRL + C &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.copy')) ?></strong><br />
+            CTRL + V &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.paste')) ?></strong><br />
+            CTRL + A &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.select')) ?></strong><p>
+            CTRL + U &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.upload')) ?></strong><br />
+            CTRL + I &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.info')) ?></strong><br />
+            CTRL + F &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.search')) ?></strong></p>
+        </div>
+        <div class="col-sm-4 col-md-3 col-lg-3">
+            CTRL + HOME &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.main_folder')) ?></strong><br />
+            CTRL + INSERT &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.copy')) ?></strong><br />
+            CTRL + BACKSPACE &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.delete')) ?></strong><p>
+            SHIFT + ENTER &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.download')) ?></strong><br />
+            SHIFT + INSERT &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.cut')) ?></strong></p>
+        </div>
+        <div class="col-sm-4 col-md-3 col-lg-3">
+            CTRL + <?= e(trans('indikator.filemanager::lang.shortcuts.up')) ?> &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.parent_folder')) ?></strong><br />
+            CTRL + <?= e(trans('indikator.filemanager::lang.shortcuts.down')) ?> &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.open')) ?></strong><br />
+            CTRL + <?= e(trans('indikator.filemanager::lang.shortcuts.left')) ?> &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.back')) ?></strong><br />
+            CTRL + <?= e(trans('indikator.filemanager::lang.shortcuts.right')) ?> &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.forward')) ?></strong><p>
+            CTRL + SHIFT + N &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.new_folder')) ?></strong><br />
+            CTRL + SHIFT + R &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.reload')) ?></strong></p>
+        </div>
+        <div class="col-sm-4 col-md-3 col-lg-2">
+            ENTER &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.open')) ?></strong><br />
+            SPACE &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.view')) ?></strong><br />
+            BACKSPACE &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.back')) ?></strong><br />
+            DELETE &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.delete')) ?></strong><p>
+            HOME &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.first_item')) ?></strong><br />
+            END &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.last_item')) ?></strong></p>
+        </div>
+        <div class="col-sm-4 col-md-3 col-lg-2">
+            F2 &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.rename')) ?></strong><br />
+            F3 &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.search')) ?></strong><br />
+            F5 &nbsp; <strong><?= e(trans('indikator.filemanager::lang.shortcuts.reload')) ?></strong>
+        </div>
+    </div></p>
 <?php else: ?>
     <p><?= e(trans('indikator.filemanager::lang.error.text')) ?> <a href="https://octobercms.com/plugin/anandpatel-wysiwygeditors" target="_blank"><?= e(trans('indikator.filemanager::lang.error.plugin')) ?></a></p>
 <?php endif; ?>

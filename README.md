@@ -13,6 +13,7 @@ Manage simple your files and folders via [elFinder](http://elfinder.org).
 * File and directory descriptions
 * Search files and folders
 * Detailed file type statistics
+* Lots of keyboard shortcuts
 
 ###Widgets
 * Basic file statistics (number of folders and files, size of files)
