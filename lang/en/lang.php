@@ -50,7 +50,7 @@ return [
         'forward' => 'forward',
         'new_folder' => 'new folder',
         'reload' => 'reload',
-        'download' => 'download',,
+        'download' => 'download',
         'rename' => 'rename',
         'first_item' => 'first item',
         'last_item' => 'last item',
