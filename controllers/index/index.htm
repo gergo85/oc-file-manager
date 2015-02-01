@@ -105,6 +105,11 @@ if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors')):
             <p><?= fm_size($stat['size']) ?></p>
             <p class="description"><?= fm_size($stat['size'], true) ?></p>
         </div>
+        <div class="scoreboard-item title-value">
+            <h4><?= e(trans('indikator.filemanager::lang.widget.limit')) ?></h4>
+            <p><?= substr(ini_get('upload_max_filesize'), 0, -1) ?></p>
+            <p class="description">MB</p>
+        </div>
         <div class="scoreboard-item control-chart" data-control="chart-pie">
             <ul>
                 <li data-color="#2a5696"><?= e(trans('indikator.filemanager::lang.widget.type.doc')) ?> <span><?= $stat['doc'] ?></span></li>

@@ -30,6 +30,7 @@ return [
             'text' => 'Text',
             'video' => 'Video'
         ],
-        'pieces' => '{0}pieces|{1}piece|[2,Inf]pieces'
+        'pieces' => '{0}pieces|{1}piece|[2,Inf]pieces',
+        'limit' => 'Upload limit'
     ]
 ];

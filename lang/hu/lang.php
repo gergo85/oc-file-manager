@@ -30,6 +30,7 @@ return [
             'text' => 'Szöveg',
             'video' => 'Videó'
         ],
-        'pieces' => 'darab'
+        'pieces' => 'darab',
+        'limit' => 'Feltöltési korlát'
     ]
 ];

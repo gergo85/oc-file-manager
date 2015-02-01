@@ -30,6 +30,7 @@ return [
             'text' => 'Text',
             'video' => 'Video'
         ],
-        'pieces' => 'stücke'
+        'pieces' => 'stücke',
+        'limit' => 'Grenze hochladen'
     ]
 ];
