@@ -141,7 +141,7 @@ function f($t) {
         $('#elfinder').elfinder({
             <?php if ($preferences['locale'] != 'en' && is_file('plugins/anandpatel/wysiwygeditors/public/js/i18n/elfinder.'.$preferences['locale'].'.js')): ?>
             lang: '<?= $preferences['locale'] ?>',
-            <? endif; ?>
+            <?php endif; ?>
             url: '<?= URL::action('Barryvdh\Elfinder\ElfinderController@showConnector') ?>'
         }).elfinder('instance');
     });
