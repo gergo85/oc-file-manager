@@ -11,41 +11,41 @@ if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors')):
 
 ?>
     <div data-control="toolbar">
-        <div class="scoreboard-item title-value">
+        <div class="scoreboard-item title-value pull-left">
             <h4><?= e(trans('indikator.filemanager::lang.widget.basic.folders')) ?></h4>
             <p><?= $stat['folders'] ?></p>
             <p class="description"><?= e(trans_choice('indikator.filemanager::lang.widget.pieces', $stat['folders'])) ?></p>
         </div>
-        <div class="scoreboard-item title-value">
+        <div class="scoreboard-item title-value pull-left">
             <h4><?= e(trans('indikator.filemanager::lang.widget.basic.files')) ?></h4>
             <p><?= $stat['files'] ?></p>
             <p class="description"><?= e(trans_choice('indikator.filemanager::lang.widget.pieces', $stat['files'])) ?></p>
         </div>
-        <div class="scoreboard-item title-value">
+        <div class="scoreboard-item title-value pull-left">
             <h4><?= e(trans('indikator.filemanager::lang.widget.basic.size')) ?></h4>
             <p><?= $this->fm_size($stat['size']) ?></p>
             <p class="description"><?= $this->fm_size($stat['size'], true) ?></p>
         </div>
-        <div class="scoreboard-item title-value">
+        <div class="scoreboard-item title-value pull-left">
             <h4><?= e(trans('indikator.filemanager::lang.widget.limit')) ?></h4>
             <p><?= substr(ini_get('upload_max_filesize'), 0, -1) ?></p>
             <p class="description">MB</p>
         </div>
-        <div class="scoreboard-item control-chart" data-control="chart-pie">
+        <div class="scoreboard-item control-chart pull-left" data-control="chart-pie">
             <ul>
                 <li data-color="#2a5696"><?= e(trans('indikator.filemanager::lang.widget.type.doc')) ?> <span><?= $stat['doc'] ?></span></li>
                 <li data-color="#1c6f44"><?= e(trans('indikator.filemanager::lang.widget.type.table')) ?> <span><?= $stat['table'] ?></span></li>
                 <li data-color="#d04424"><?= e(trans('indikator.filemanager::lang.widget.type.prezi')) ?> <span><?= $stat['prezi'] ?></span></li>
             </ul>
         </div>
-        <div class="scoreboard-item control-chart" data-control="chart-pie">
+        <div class="scoreboard-item control-chart pull-left" data-control="chart-pie">
             <ul>
                 <li data-color="#95b753"><?= e(trans('indikator.filemanager::lang.widget.type.image')) ?> <span><?= $stat['image'] ?></span></li>
                 <li data-color="#c07949"><?= e(trans('indikator.filemanager::lang.widget.type.video')) ?> <span><?= $stat['video'] ?></span></li>
                 <li data-color="#30b4da"><?= e(trans('indikator.filemanager::lang.widget.type.audio')) ?> <span><?= $stat['audio'] ?></span></li>
             </ul>
         </div>
-        <div class="scoreboard-item control-chart" data-control="chart-pie">
+        <div class="scoreboard-item control-chart pull-left" data-control="chart-pie">
             <ul>
                 <li data-color="#ac5e91"><?= e(trans('indikator.filemanager::lang.widget.type.text')) ?> <span><?= $stat['text'] ?></span></li>
                 <li data-color="#ff940a"><?= e(trans('indikator.filemanager::lang.widget.type.archive')) ?> <span><?= $stat['archive'] ?></span></li>
