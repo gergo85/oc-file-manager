@@ -36,10 +36,14 @@ class Index extends Controller
         }
     }
 
-    public function fm_stat($folder = 'uploads/public')
+    public function fm_stat($folder = 'storage/app/uploads/public')
     {
         $attr['size'] = $attr['files'] = $attr['folders'] = 0;
         $attr['audio'] = $attr['archive'] = $attr['code'] = $attr['doc'] = $attr['image'] = $attr['other'] = $attr['prezi'] = $attr['table'] = $attr['text'] = $attr['video'] = 0;
+
+        if (!is_dir($folder)) {
+            mkdir($folder);
+        }
 
         $elementents = scandir($folder);
         foreach ($elementents as $element) {

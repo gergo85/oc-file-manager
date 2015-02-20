@@ -3,10 +3,14 @@
 use Backend\Models\UserPreferences;
 $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
 
-function fm_stat2($folder = 'uploads/public')
+function fm_stat2($folder = 'storage/app/uploads/public')
 {
     $attr['size_audio'] = $attr['size_archive'] = $attr['size_code'] = $attr['size_doc'] = $attr['size_image'] = $attr['size_other'] = $attr['size_prezi'] = $attr['size_table'] = $attr['size_text'] = $attr['size_video'] = 0;
     $attr['file_audio'] = $attr['file_archive'] = $attr['file_code'] = $attr['file_doc'] = $attr['file_image'] = $attr['file_other'] = $attr['file_prezi'] = $attr['file_table'] = $attr['file_text'] = $attr['file_video'] = 0;
+
+    if (!is_dir($folder)) {
+        mkdir($folder);
+    }
 
     $elementents = scandir($folder);
     foreach ($elementents as $element) {
