@@ -41,14 +41,18 @@ class Index extends Controller
         $attr['size'] = $attr['files'] = $attr['folders'] = 0;
         $attr['audio'] = $attr['archive'] = $attr['code'] = $attr['doc'] = $attr['image'] = $attr['other'] = $attr['prezi'] = $attr['table'] = $attr['text'] = $attr['video'] = 0;
 
-        if (!is_dir($folder)) {
-            mkdir($folder);
+        if (!is_dir($folder))
+        {
+            File::makeDirectory($folder, 0775);
         }
 
         $elementents = scandir($folder);
-        foreach ($elementents as $element) {
-            if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb') {
-                if (filetype($folder.'/'.$element) == 'dir') {
+        foreach ($elementents as $element)
+        {
+            if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb')
+            {
+                if (filetype($folder.'/'.$element) == 'dir')
+                {
                     $value = $this->fm_stat($folder.'/'.$element);
                     $attr['size'] += $value['size'];
                     $attr['files'] += $value['files'];
@@ -64,7 +68,8 @@ class Index extends Controller
                     $attr['video'] += $value['video'];
                 }
 
-                else {
+                else
+                {
                     $attr['size'] += filesize($folder.'/'.$element);
                     $attr['files']++;
                     $attr[$this->fm_type(substr(strrchr($element, '.'), 1))]++;
@@ -77,11 +82,13 @@ class Index extends Controller
 
     public function fm_size($size = 0, $sizename = false)
     {
-        if ($size > 0) {
+        if ($size > 0)
+        {
             $name = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
             $common = array('au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw');
 
-            for ($i = 0; $size >= 1024; $i++) {
+            for ($i = 0; $size >= 1024; $i++)
+            {
                 $size /= 1024;
                 if ($i < 1) $size = round($size, 0);
                 else $size = round($size, 1);
