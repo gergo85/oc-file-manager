@@ -43,7 +43,7 @@ class Index extends Controller
 
         if (!is_dir($folder))
         {
-            File::makeDirectory($folder, 0775);
+            File::makeDirectory($folder, 0775, true);
         }
 
         $elementents = scandir($folder);
