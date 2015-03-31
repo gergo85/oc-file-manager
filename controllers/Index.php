@@ -1,5 +1,6 @@
 <?php namespace Indikator\Filemanager\Controllers;
 
+use File;
 use Backend\Classes\Controller;
 use Backend\Models\UserPreferences;
 use System\Classes\PluginManager;
