@@ -1,5 +1,7 @@
 <?php namespace Indikator\Filemanager\Controllers;
 
+use File;
+use BackendMenu;
 use Backend\Classes\Controller;
 use Backend\Models\UserPreferences;
 use System\Classes\PluginManager;
@@ -34,6 +36,8 @@ class Index extends Controller
                 $this->addJs('/plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$preferences['locale'].'.js');
             }
         }
+
+        BackendMenu::setContext('Indikator.Filemanager', 'pages');
     }
 
     public function fm_stat($folder = 'storage/app/uploads/public')
