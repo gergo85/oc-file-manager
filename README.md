@@ -1,4 +1,4 @@
-##File Manager plugin for October CMS
+##File Manager plugin for OctoberCMS
 Manage simple your files and folders via [elFinder](http://elfinder.org).
 
 ###Main features
