@@ -31,7 +31,7 @@ Manage simple your files and folders via [elFinder](http://elfinder.org).
 
 If you don't use the [Wysiwyg Editors](https://octobercms.com/plugin/anandpatel-wysiwygeditors) plugin, you need to install it.
 
-###Roadmap
+###Plans
 * Support [Responsive Filemanager](http://www.responsivefilemanager.com).
 * Change between public and private folders.
 
