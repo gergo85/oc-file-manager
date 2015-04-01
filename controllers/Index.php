@@ -1,10 +1,10 @@
 <?php namespace Indikator\Filemanager\Controllers;
 
-use File;
-use BackendMenu;
 use Backend\Classes\Controller;
 use Backend\Models\UserPreferences;
 use System\Classes\PluginManager;
+use BackendMenu;
+use File;
 
 class Index extends Controller
 {
@@ -125,7 +125,9 @@ class Index extends Controller
             'video'   => array('avi', 'divx', 'dv',   'flv',  'm4v',  'mkv',  'mov',  'mp4', 'mpeg', 'mpg',  'qt',  'rm',  'swf', 'vob', 'wmv')
         );
 
-        foreach ($types as $type => $extensions) if (in_array($extension, $extensions)) return $type;
+        foreach ($types as $type => $extensions) {
+            if (in_array($extension, $extensions)) return $type;
+        }
         return 'other';
     }
 }
