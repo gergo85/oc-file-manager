@@ -26,8 +26,8 @@ Manage simple your files and folders via [elFinder](http://elfinder.org).
 
 ###Installation
 1. Go to the __Settings -> Updates__ page in Backend.
-1. Type the __Indikator.Filemanager__ in search field.
-1. Click on the __Install Plugin__ button.
+1. Click on the __Install Plugins__ button.
+1. Type the __File Manager__ in search field.
 
 If you don't use the [Wysiwyg Editors](https://octobercms.com/plugin/anandpatel-wysiwygeditors) plugin, you need to install it.
 
