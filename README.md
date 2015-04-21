@@ -22,6 +22,7 @@ Manage simple your files and folders via [elFinder](http://elfinder.org).
 ###Available languages
 * en - English
 * de - Deutsch
+* cs - Čeština
 * hu - Magyar
 
 ###Installation
