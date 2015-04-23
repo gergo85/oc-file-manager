@@ -32,10 +32,6 @@ Manage simple your files and folders via [elFinder](http://elfinder.org).
 
 If you don't use the [Wysiwyg Editors](https://octobercms.com/plugin/anandpatel-wysiwygeditors) plugin, you need to install it.
 
-###Plans
-* Support [Responsive Filemanager](http://www.responsivefilemanager.com).
-* Change between public and private folders.
-
 ###Credits
 * File manager: [elFinder](https://github.com/Studio-42/elFinder)
 * Plugin icon: [Web App icons](http://icons8.com/web-app/new-icons/all)
