@@ -31,7 +31,7 @@ class Index extends Controller
             $this->addJs('http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
             $this->addJs('/plugins/anandpatel/wysiwygeditors/resources/assets/js/elfinder.min.js');
 
-            if ($preferences['locale'] != 'en' && is_file('plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$preferences['locale'].'.js'))
+            if ($preferences['locale'] != 'en' && File::exists('plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$preferences['locale'].'.js'))
             {
                 $this->addJs('/plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$preferences['locale'].'.js');
             }
@@ -45,7 +45,7 @@ class Index extends Controller
         $attr['size'] = $attr['files'] = $attr['folders'] = 0;
         $attr['audio'] = $attr['archive'] = $attr['code'] = $attr['doc'] = $attr['image'] = $attr['other'] = $attr['prezi'] = $attr['table'] = $attr['text'] = $attr['video'] = 0;
 
-        if (!is_dir($folder))
+        if (!File::exists($folder))
         {
             File::makeDirectory($folder, 0775, true);
         }
@@ -55,7 +55,7 @@ class Index extends Controller
         {
             if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb')
             {
-                if (filetype($folder.'/'.$element) == 'dir')
+                if (File::type($folder.'/'.$element) == 'dir')
                 {
                     $value = $this->fm_stat($folder.'/'.$element);
                     $attr['size'] += $value['size'];
@@ -74,7 +74,7 @@ class Index extends Controller
 
                 else
                 {
-                    $attr['size'] += filesize($folder.'/'.$element);
+                    $attr['size'] += File::size($folder.'/'.$element);
                     $attr['files']++;
                     $attr[$this->fm_type(substr(strrchr($element, '.'), 1))]++;
                 }
