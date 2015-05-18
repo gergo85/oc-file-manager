@@ -24,11 +24,11 @@ class Index extends Controller
 
         if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors'))
         {
-            $this->addCss('http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css');
+            $this->addCss('http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css');
             $this->addCss('/plugins/anandpatel/wysiwygeditors/resources/assets/css/elfinder.min.css');
             $this->addCss('/plugins/anandpatel/wysiwygeditors/resources/assets/css/theme.css');
 
-            $this->addJs('http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
+            $this->addJs('http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
             $this->addJs('/plugins/anandpatel/wysiwygeditors/resources/assets/js/elfinder.min.js');
 
             if ($preferences['locale'] != 'en' && File::exists('plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$preferences['locale'].'.js'))
@@ -40,7 +40,7 @@ class Index extends Controller
         BackendMenu::setContext('Indikator.Filemanager', 'pages');
     }
 
-    public function fm_stat($folder = 'storage/app/uploads/public')
+    public function fm_stat($folder = 'storage/app')
     {
         $attr['size'] = $attr['files'] = $attr['folders'] = 0;
         $attr['audio'] = $attr['archive'] = $attr['code'] = $attr['doc'] = $attr['image'] = $attr['other'] = $attr['prezi'] = $attr['table'] = $attr['text'] = $attr['video'] = 0;
@@ -125,9 +125,11 @@ class Index extends Controller
             'video'   => array('avi', 'divx', 'dv',   'flv',  'm4v',  'mkv',  'mov',  'mp4', 'mpeg', 'mpg',  'qt',  'rm',  'swf', 'vob', 'wmv')
         );
 
-        foreach ($types as $type => $extensions) {
+        foreach ($types as $type => $extensions)
+        {
             if (in_array($extension, $extensions)) return $type;
         }
+
         return 'other';
     }
 }
