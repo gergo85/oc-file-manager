@@ -10,6 +10,10 @@ return [
         'text' => 'Nejdříve musíte nainstalovat následující pluginy:',
         'plugin' => 'Wysiwyg Editors'
     ],
+    'settings' => [
+        'hide_stat' => 'Skrýt stav by Soubor Správce plugin.',
+        'hide_help' => 'Skrýt pomoc by Soubor Správce plugin.'
+    ],
     'widget' => [
         'basic' => [
             'label' => 'Přehled uložených souborů',

@@ -10,6 +10,10 @@ return [
         'text' => 'First of all you need to install the following plugin:',
         'plugin' => 'Wysiwyg Editors'
     ],
+    'settings' => [
+        'hide_stat' => 'Hide the statistics by File Manager plugin.',
+        'hide_help' => 'Hide the help by File Manager plugin.'
+    ],
     'widget' => [
         'basic' => [
             'label' => 'Basic file statistics',

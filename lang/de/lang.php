@@ -10,6 +10,10 @@ return [
         'text' => 'Zunächst einmal müssen Sie die folgenden Plugin zu installieren:',
         'plugin' => 'Wysiwyg-Editoren'
     ],
+    'settings' => [
+        'hide_stat' => 'Statistiken von Dateimanager Plugin ausblenden.',
+        'hide_help' => 'Hilfe ausblenden, indem Dateimanager Plugin.'
+    ],
     'widget' => [
         'basic' => [
             'label' => 'Basic-Datei Statistiken',

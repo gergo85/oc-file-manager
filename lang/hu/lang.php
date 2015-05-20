@@ -10,6 +10,10 @@ return [
         'text' => 'Először telepítenie kell a következő plugint:',
         'plugin' => 'Wysiwyg Editors'
     ],
+    'settings' => [
+        'hide_stat' => 'Statisztika rejtése a Fájlkezelő bővítménynél.',
+        'hide_help' => 'Súgó rejtése a Fájlkezelő bővítménynél.'
+    ],
     'widget' => [
         'basic' => [
             'label' => 'Alapvető fájl statisztika',
