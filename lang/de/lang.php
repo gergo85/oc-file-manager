@@ -11,6 +11,9 @@ return [
         'plugin' => 'Wysiwyg-Editoren'
     ],
     'settings' => [
+        'tooltip1' => 'Sie können die Statistik-Elemente in <b>Einstellungen > Back-end-Einstellungen</b> Seite verstecken oder zu helfen.',
+        'tooltip2' => 'Wenn möchten Sie das Media Link in Top-Menü zu verstecken, zu laden Sie die <b>Backend plus</b> Plugin von Oktober Marktplatz.',
+        'tooltip3' => 'Bitte <b>Bewertung Plugin</b>, ob es geholfen Ihre Arbeit:',
         'hide_stat' => 'Statistiken von Dateimanager Plugin ausblenden.',
         'hide_help' => 'Hilfe ausblenden, indem Dateimanager Plugin.'
     ],

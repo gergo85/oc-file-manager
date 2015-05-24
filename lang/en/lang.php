@@ -11,6 +11,9 @@ return [
         'plugin' => 'Wysiwyg Editors'
     ],
     'settings' => [
+        'tooltip1' => 'You can hide the statistics or help elements in <b>Settings > Back-end preferences</b> page.',
+        'tooltip2' => 'If would you like to hide the Media link in top menu too, get download the <b>Backend Plus</b> plugin from October Marketplace.',
+        'tooltip3' => 'Please <b>rate this plugin</b> if it helped your work:',
         'hide_stat' => 'Hide the statistics by File Manager plugin.',
         'hide_help' => 'Hide the help by File Manager plugin.'
     ],

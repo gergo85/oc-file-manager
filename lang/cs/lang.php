@@ -11,6 +11,9 @@ return [
         'plugin' => 'Wysiwyg Editors'
     ],
     'settings' => [
+        'tooltip1' => 'Můžete skrýt statistiky nebo pomoci prvky v <b>Nastavení > Back-end preferencí</b>.',
+        'tooltip2' => 'Pokud byste chtěli skrýt odkaz média v horním menu příliš, dostat stáhněte <b>Backend Plus</b> plugin období od října do Marketplace.',
+        'tooltip3' => 'Prosím, <b>hodnotíte tento plugin</b>, pokud to pomohlo svou práci:',
         'hide_stat' => 'Skrýt stav by Soubor Správce plugin.',
         'hide_help' => 'Skrýt pomoc by Soubor Správce plugin.'
     ],

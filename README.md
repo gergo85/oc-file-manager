@@ -19,6 +19,10 @@ Manage simple your files and folders via [elFinder](http://elfinder.org).
 * Basic file statistics (number of folders and files, size of files)
 * File type statistics (number of files and size of files)
 
+###Hide the statistics or help elements
+1. Go to the __Settings ->  Back-end preferences__ page in Backend.
+1. Activate the current option and click on the Save button.
+
 ###Available languages
 * en - English
 * de - Deutsch
