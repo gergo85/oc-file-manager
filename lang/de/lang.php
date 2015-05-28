@@ -19,19 +19,21 @@ return [
     ],
     'widget' => [
         'basic' => [
-            'label' => 'Basic-Datei Statistiken',
+            'title' => 'Datei-Manager - Datei Statistiken',
+            'label' => 'Datei Statistiken',
             'folders' => 'Mappe',
             'files' => 'Dateien',
             'size' => 'Größe'
         ],
         'type' => [
+            'title' => 'Datei-Manager - Dateityp-Statistiken',
             'label' => 'Dateityp-Statistiken',
+            'graph' => 'Graph',
             'audio' => 'Audio',
             'archive' => 'Archivieren',
             'code' => 'Kabeljau',
             'doc' => 'Dokument',
             'image' => 'Bild',
-            'other' => 'Andere',
             'prezi' => 'Prezi',
             'table' => 'Tabelle',
             'text' => 'Text',

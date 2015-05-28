@@ -19,19 +19,21 @@ return [
     ],
     'widget' => [
         'basic' => [
+            'title' => 'Správce souborů - Přehled uložených souborů',
             'label' => 'Přehled uložených souborů',
             'folders' => 'Složky',
             'files' => 'Soubory',
             'size' => 'Celková velikost'
         ],
         'type' => [
+            'title' => 'Správce souborů - Přehled uložených souborů dle typu',
             'label' => 'Přehled uložených souborů dle typu',
+            'graph' => 'Graf',
             'audio' => 'Audio',
             'archive' => 'Archivy',
             'code' => 'Kód',
             'doc' => 'Dokumenty',
             'image' => 'Obrázky',
-            'other' => 'Jiné',
             'prezi' => 'Prezentace',
             'table' => 'Tabulky',
             'text' => 'Texty',

@@ -12,26 +12,28 @@ return [
     ],
     'settings' => [
         'tooltip1' => 'A statisztika és a súgó elemek elrejthetőek a <b>Beállítások > Admin felület</b> oldalon.',
-        'tooltip2' => 'Amennyiben el szeretné rejteni a Média linket a felső menüben, töltse le hozzá a <b>Backend Plus</b> bővítményt az October piacteréről.',
+        'tooltip2' => 'Amennyiben el szeretné rejteni a Média linket a felső menüben, töltse le a <b>Backend Plus</b> bővítményt az October piacteréről.',
         'tooltip3' => 'Kérjük <b>értékelje a bővítményt</b>, amennyiben segítette a munkáját:',
         'hide_stat' => 'Statisztika rejtése a Fájlkezelő bővítménynél.',
         'hide_help' => 'Súgó rejtése a Fájlkezelő bővítménynél.'
     ],
     'widget' => [
         'basic' => [
-            'label' => 'Alapvető fájl statisztika',
+            'title' => 'Fájlkezelő - Fájl statisztika',
+            'label' => 'Fájl statisztika',
             'folders' => 'Mappa',
             'files' => 'Fájl',
             'size' => 'Méret'
         ],
         'type' => [
-            'label' => 'Fájl típus statisztika',
+            'title' => 'Fájlkezelő - Fájltípus statisztika',
+            'label' => 'Fájltípus statisztika',
+            'graph' => 'Grafikon',
             'audio' => 'Audió',
             'archive' => 'Archív',
             'code' => 'Kód',
             'doc' => 'Doksi',
             'image' => 'Kép',
-            'other' => 'Egyéb',
             'prezi' => 'Prezi',
             'table' => 'Táblázat',
             'text' => 'Szöveg',

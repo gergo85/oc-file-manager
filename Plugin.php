@@ -34,11 +34,11 @@ class Plugin extends PluginBase
     {
         return [
             'Indikator\Filemanager\ReportWidgets\Basic' => [
-                'label'   => 'indikator.filemanager::lang.widget.basic.label',
+                'label'   => 'indikator.filemanager::lang.widget.basic.title',
                 'context' => 'dashboard'
             ],
             'Indikator\Filemanager\ReportWidgets\Type' => [
-                'label'   => 'indikator.filemanager::lang.widget.type.label',
+                'label'   => 'indikator.filemanager::lang.widget.type.title',
                 'context' => 'dashboard'
             ]
         ];

@@ -19,19 +19,21 @@ return [
     ],
     'widget' => [
         'basic' => [
-            'label' => 'Basic file statistics',
+            'title' => 'File Manager - File statistics',
+            'label' => 'File statistics',
             'folders' => 'Folders',
             'files' => 'Files',
             'size' => 'Size'
         ],
         'type' => [
+            'title' => 'File Manager - File type statistics',
             'label' => 'File type statistics',
+            'graph' => 'Graph',
             'audio' => 'Audio',
             'archive' => 'Archive',
             'code' => 'Code',
             'doc' => 'Document',
             'image' => 'Image',
-            'other' => 'Other',
             'prezi' => 'Prezi',
             'table' => 'Table',
             'text' => 'Text',
