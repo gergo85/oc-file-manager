@@ -3,55 +3,72 @@
 use Backend\Models\UserPreferences;
 $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
 
-function fm_stat1($folder = 'storage/app/uploads/public')
+if (!function_exists('fm_stat1'))
 {
-    $attr['size'] = $attr['files'] = $attr['folders'] = 0;
+    function fm_stat1($folder = 'storage/app')
+    {
+        $attr['size'] = $attr['files'] = $attr['folders'] = 0;
 
-    if (!is_dir($folder)) {
-        mkdir($folder);
-    }
+        if (!File::exists($folder))
+        {
+            File::makeDirectory($folder, 0775, true);
+        }
 
-    $elementents = scandir($folder);
-    foreach ($elementents as $element) {
-        if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb') {
-            if (filetype($folder.'/'.$element) == 'dir') {
-                $value = fm_stat1($folder.'/'.$element);
-                $attr['size'] += $value['size'];
-                $attr['files'] += $value['files'];
-                $attr['folders'] += $value['folders'] + 1;
-            }
+        $elementents = scandir($folder);
+        foreach ($elementents as $element)
+        {
+            if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb')
+            {
+                if (filetype($folder.'/'.$element) == 'dir')
+                {
+                    $value = fm_stat1($folder.'/'.$element);
+                    $attr['size'] += $value['size'];
+                    $attr['files'] += $value['files'];
+                    $attr['folders'] += $value['folders'] + 1;
+                }
 
-            else {
-                $attr['size'] += filesize($folder.'/'.$element);
-                $attr['files']++;
+                else
+                {
+                    $attr['size'] += File::size($folder.'/'.$element);
+                    $attr['files']++;
+                }
             }
         }
-    }
 
-    return $attr;
+        return $attr;
+    }
 }
 
-function fm_size1($size = 0)
+if (!function_exists('fm_size1'))
 {
-    if ($size > 0) {
-        $name = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
-        $common = array('au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw');
+    function fm_size1($size = 0)
+    {
+        if ($size > 0)
+        {
+            $name = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
+            $common = array('au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw');
 
-        for ($i = 0; $size >= 1024; $i++) {
-            $size /= 1024;
-            if ($i < 1) $size = round($size, 0);
-            else $size = round($size, 1);
+            for ($i = 0; $size >= 1024; $i++)
+            {
+                $size /= 1024;
+                if ($i < 1) $size = round($size, 0);
+                else $size = round($size, 1);
+            }
+
+            global $preferences;
+
+            if (!in_array($preferences['locale'], $common))
+            {
+                $size = str_replace('.', ',', $size);
+            }
+
+            return $size.' '.$name[$i];
         }
 
-        global $preferences;
-        if (!in_array($preferences['locale'], $common)) $size = str_replace('.', ',', $size);
+        $size = '0 '.'B';
 
-        return $size.' '.$name[$i];
+        return $size;
     }
-
-    $size = '0 '.'B';
-
-    return $size;
 }
 
 $stat = fm_stat1();
