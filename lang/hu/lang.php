@@ -11,7 +11,7 @@ return [
         'plugin' => 'Wysiwyg Editors'
     ],
     'settings' => [
-        'tooltip1' => 'A statisztika és a súgó elemek elrejthetőek a <b>Beállítások > Admin felület</b> oldalon.',
+        'tooltip1' => 'A statisztika és a súgó elemek elrejthetőek a (jobb felső sarokban lévő) személyes menü <b>Admin felület</b> oldalán.',
         'tooltip2' => 'Amennyiben el szeretné rejteni a Média linket a felső menüben, töltse le a <b>Backend Plus</b> bővítményt az October piacteréről.',
         'tooltip3' => 'Kérjük <b>értékelje a bővítményt</b>, amennyiben segítette a munkáját:',
         'hide_stat' => 'Statisztika rejtése a Fájlkezelő bővítménynél.',
