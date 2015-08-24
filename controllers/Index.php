@@ -22,8 +22,7 @@ class Index extends Controller
 
         $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
 
-        if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors'))
-        {
+        if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors')) {
             $this->addCss('http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css');
             $this->addCss('/plugins/anandpatel/wysiwygeditors/resources/assets/css/elfinder.min.css');
             $this->addCss('/plugins/anandpatel/wysiwygeditors/resources/assets/css/theme.css');
@@ -31,8 +30,7 @@ class Index extends Controller
             $this->addJs('http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
             $this->addJs('/plugins/anandpatel/wysiwygeditors/resources/assets/js/elfinder.min.js');
 
-            if ($preferences['locale'] != 'en' && File::exists('plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$preferences['locale'].'.js'))
-            {
+            if ($preferences['locale'] != 'en' && File::exists('plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$preferences['locale'].'.js')) {
                 $this->addJs('/plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$preferences['locale'].'.js');
             }
         }
@@ -45,18 +43,14 @@ class Index extends Controller
         $attr['size'] = $attr['files'] = $attr['folders'] = 0;
         $attr['audio'] = $attr['archive'] = $attr['code'] = $attr['doc'] = $attr['image'] = $attr['other'] = $attr['prezi'] = $attr['table'] = $attr['text'] = $attr['video'] = 0;
 
-        if (!File::exists($folder))
-        {
+        if (!File::exists($folder)) {
             File::makeDirectory($folder, 0775, true);
         }
 
         $elementents = scandir($folder);
-        foreach ($elementents as $element)
-        {
-            if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb')
-            {
-                if (File::type($folder.'/'.$element) == 'dir')
-                {
+        foreach ($elementents as $element) {
+            if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb') {
+                if (File::type($folder.'/'.$element) == 'dir') {
                     $value = $this->fm_stat($folder.'/'.$element);
                     $attr['size'] += $value['size'];
                     $attr['files'] += $value['files'];
@@ -72,8 +66,7 @@ class Index extends Controller
                     $attr['video'] += $value['video'];
                 }
 
-                else
-                {
+                else {
                     $attr['size'] += File::size($folder.'/'.$element);
                     $attr['files']++;
                     $attr[$this->fm_type(substr(strrchr($element, '.'), 1))]++;
@@ -86,13 +79,11 @@ class Index extends Controller
 
     public function fm_size($size = 0, $sizename = false)
     {
-        if ($size > 0)
-        {
-            $name = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
-            $common = array('au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw');
+        if ($size > 0) {
+            $name = ['B', 'KB', 'MB', 'GB', 'TB', 'PB');
+            $common = ['au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw');
 
-            for ($i = 0; $size >= 1024; $i++)
-            {
+            for ($i = 0; $size >= 1024; $i++) {
                 $size /= 1024;
                 if ($i < 1) $size = round($size, 0);
                 else $size = round($size, 1);
@@ -113,20 +104,19 @@ class Index extends Controller
 
     public function fm_type($extension = 'txt')
     {
-        $types = array(
-            'audio'   => array('aac', 'ac3',  'aif',  'm3a',  'm4a',  'm4b',  'mka',  'mp1', 'mp2',  'mp3',  'ogg', 'oga', 'ram', 'wav', 'wma'),
-            'archive' => array('bz2', 'cab',  'gz',   'rar',  'tar',  'tgz',  'zip',  '7z'),
-            'code'    => array('css', 'htm',  'html', 'php',  'js',   'c',    'c++'),
-            'doc'     => array('doc', 'docx', 'docm', 'dotm', 'odt',  'pdf',  'rtf',  'wp',  'wpd'),
-            'image'   => array('bmp', 'gif',  'ico',  'jpg',  'jpeg', 'png',  'psd',  'raw', 'tif',  'tiff'),
-            'prezi'   => array('ppt', 'pptx', 'pptm', 'pps',  'ppsx', 'ppsm', 'sldx', 'sldm'),
-            'table'   => array('ods', 'xls',  'xlsx', 'xlsm', 'xlsb'),
-            'text'    => array('asc', 'csv',  'tsv',  'txt',  'xml'),
-            'video'   => array('avi', 'divx', 'dv',   'flv',  'm4v',  'mkv',  'mov',  'mp4', 'mpeg', 'mpg',  'qt',  'rm',  'swf', 'vob', 'wmv')
-        );
+        $types = [
+            'audio'   => ['aac', 'ac3',  'aif',  'm3a',  'm4a',  'm4b',  'mka',  'mp1', 'mp2',  'mp3',  'ogg', 'oga', 'ram', 'wav', 'wma'],
+            'archive' => ['bz2', 'cab',  'gz',   'rar',  'tar',  'tgz',  'zip',  '7z'],
+            'code'    => ['css', 'htm',  'html', 'php',  'js',   'c',    'c++'],
+            'doc'     => ['doc', 'docx', 'docm', 'dotm', 'odt',  'pdf',  'rtf',  'wp',  'wpd'],
+            'image'   => ['bmp', 'gif',  'ico',  'jpg',  'jpeg', 'png',  'psd',  'raw', 'tif',  'tiff'],
+            'prezi'   => ['ppt', 'pptx', 'pptm', 'pps',  'ppsx', 'ppsm', 'sldx', 'sldm'],
+            'table'   => ['ods', 'xls',  'xlsx', 'xlsm', 'xlsb'],
+            'text'    => ['asc', 'csv',  'tsv',  'txt',  'xml'],
+            'video'   => ['avi', 'divx', 'dv',   'flv',  'm4v',  'mkv',  'mov',  'mp4', 'mpeg', 'mpg',  'qt',  'rm',  'swf', 'vob', 'wmv']
+        ];
 
-        foreach ($types as $type => $extensions)
-        {
+        foreach ($types as $type => $extensions) {
             if (in_array($extension, $extensions)) return $type;
         }
 

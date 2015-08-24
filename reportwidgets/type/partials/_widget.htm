@@ -3,25 +3,20 @@
 use Backend\Models\UserPreferences;
 $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
 
-if (!function_exists('fm_stat2'))
-{
+if (!function_exists('fm_stat2')) {
     function fm_stat2($folder = 'storage/app')
     {
         $attr['size_audio'] = $attr['size_archive'] = $attr['size_code'] = $attr['size_doc'] = $attr['size_image'] = $attr['size_other'] = $attr['size_prezi'] = $attr['size_table'] = $attr['size_text'] = $attr['size_video'] = 0;
         $attr['file_audio'] = $attr['file_archive'] = $attr['file_code'] = $attr['file_doc'] = $attr['file_image'] = $attr['file_other'] = $attr['file_prezi'] = $attr['file_table'] = $attr['file_text'] = $attr['file_video'] = 0;
 
-        if (!File::exists($folder))
-        {
+        if (!File::exists($folder)) {
             File::makeDirectory($folder, 0775, true);
         }
 
         $elementents = scandir($folder);
-        foreach ($elementents as $element)
-        {
-            if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb')
-            {
-                if (filetype($folder.'/'.$element) == 'dir')
-                {
+        foreach ($elementents as $element) {
+            if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb') {
+                if (filetype($folder.'/'.$element) == 'dir') {
                     $value = fm_stat2($folder.'/'.$element);
                     $attr['size_audio'] += $value['size_audio'];
                     $attr['size_archive'] += $value['size_archive'];
@@ -43,8 +38,7 @@ if (!function_exists('fm_stat2'))
                     $attr['file_video'] += $value['file_video'];
                 }
 
-                else
-                {
+                else {
                     $type = fm_type(substr(strrchr($element, '.'), 1));
                     $attr['size_'.$type] += File::size($folder.'/'.$element);
                     $attr['file_'.$type]++;
@@ -56,17 +50,14 @@ if (!function_exists('fm_stat2'))
     }
 }
 
-if (!function_exists('fm_size2'))
-{
+if (!function_exists('fm_size2')) {
     function fm_size2($size = 0)
     {
-        if ($size > 0)
-        {
-            $name = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
-            $common = array('au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw');
+        if ($size > 0) {
+            $name = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+            $common = ['au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw'];
 
-            for ($i = 0; $size >= 1024; $i++)
-            {
+            for ($i = 0; $size >= 1024; $i++) {
                 $size /= 1024;
                 if ($i < 1) $size = round($size, 0);
                 else $size = round($size, 1);
@@ -74,8 +65,7 @@ if (!function_exists('fm_size2'))
 
             global $preferences;
 
-            if (!in_array($preferences['locale'], $common))
-            {
+            if (!in_array($preferences['locale'], $common)) {
                 $size = str_replace('.', ',', $size);
             }
 
@@ -88,24 +78,22 @@ if (!function_exists('fm_size2'))
     }
 }
 
-if (!function_exists('fm_type'))
-{
+if (!function_exists('fm_type')) {
     function fm_type($extension = 'txt')
     {
-        $types = array(
-            'audio'   => array('aac', 'ac3',  'aif',  'm3a',  'm4a',  'm4b',  'mka',  'mp1', 'mp2',  'mp3',  'ogg', 'oga', 'ram', 'wav', 'wma'),
-            'archive' => array('bz2', 'cab',  'gz',   'rar',  'tar',  'tgz',  'zip',  '7z'),
-            'code'    => array('css', 'htm',  'html', 'php',  'js',   'c',    'c++'),
-            'doc'     => array('doc', 'docx', 'docm', 'dotm', 'odt',  'pdf',  'rtf',  'wp',  'wpd'),
-            'image'   => array('bmp', 'gif',  'ico',  'jpg',  'jpeg', 'png',  'psd',  'raw', 'tif',  'tiff'),
-            'prezi'   => array('ppt', 'pptx', 'pptm', 'pps',  'ppsx', 'ppsm', 'sldx', 'sldm'),
-            'table'   => array('ods', 'xls',  'xlsx', 'xlsm', 'xlsb'),
-            'text'    => array('asc', 'csv',  'tsv',  'txt',  'xml'),
-            'video'   => array('avi', 'divx', 'dv',   'flv',  'm4v',  'mkv',  'mov',  'mp4', 'mpeg', 'mpg',  'qt',  'rm',  'swf', 'vob', 'wmv')
-        );
+        $types = [
+            'audio'   => ['aac', 'ac3',  'aif',  'm3a',  'm4a',  'm4b',  'mka',  'mp1', 'mp2',  'mp3',  'ogg', 'oga', 'ram', 'wav', 'wma'],
+            'archive' => ['bz2', 'cab',  'gz',   'rar',  'tar',  'tgz',  'zip',  '7z'],
+            'code'    => ['css', 'htm',  'html', 'php',  'js',   'c',    'c++'],
+            'doc'     => ['doc', 'docx', 'docm', 'dotm', 'odt',  'pdf',  'rtf',  'wp',  'wpd'],
+            'image'   => ['bmp', 'gif',  'ico',  'jpg',  'jpeg', 'png',  'psd',  'raw', 'tif',  'tiff'],
+            'prezi'   => ['ppt', 'pptx', 'pptm', 'pps',  'ppsx', 'ppsm', 'sldx', 'sldm'],
+            'table'   => ['ods', 'xls',  'xlsx', 'xlsm', 'xlsb'],
+            'text'    => ['asc', 'csv',  'tsv',  'txt',  'xml'],
+            'video'   => ['avi', 'divx', 'dv',   'flv',  'm4v',  'mkv',  'mov',  'mp4', 'mpeg', 'mpg',  'qt',  'rm',  'swf', 'vob', 'wmv']
+        ];
 
-        foreach ($types as $type => $extensions)
-        {
+        foreach ($types as $type => $extensions) {
             if (in_array($extension, $extensions)) return $type;
         }
 

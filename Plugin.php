@@ -48,8 +48,7 @@ class Plugin extends PluginBase
     {
         Event::listen('backend.form.extendFields', function($form)
         {
-            if ($form->model instanceof Backend\Models\BackendPreferences)
-            {
+            if ($form->model instanceof Backend\Models\BackendPreferences) {
                 $form->addFields([
                     'fm_hide_stat' => [
                         'label'   => 'indikator.filemanager::lang.settings.hide_stat',
