@@ -80,8 +80,8 @@ class Index extends Controller
     public function fm_size($size = 0, $sizename = false)
     {
         if ($size > 0) {
-            $name = ['B', 'KB', 'MB', 'GB', 'TB', 'PB');
-            $common = ['au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw');
+            $name = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+            $common = ['au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw'];
 
             for ($i = 0; $size >= 1024; $i++) {
                 $size /= 1024;
