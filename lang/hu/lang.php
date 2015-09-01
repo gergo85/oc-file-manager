@@ -7,7 +7,7 @@ return [
         'author' => 'Szabó Gergő'
     ],
     'error' => [
-        'text' => 'Először telepítenie kell a következő plugint:',
+        'text' => 'Először <b>telepítenie és aktíválnia kell</b> a következő plugint:',
         'plugin' => 'Wysiwyg Editors'
     ],
     'settings' => [

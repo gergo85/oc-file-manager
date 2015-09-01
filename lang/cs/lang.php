@@ -39,7 +39,7 @@ return [
             'text' => 'Texty',
             'video' => 'Video'
         ],
-        'pieces' => '{0}položek|{1}položka|[2,Inf]položky',
+        'pieces' => 'položka|položky',
         'limit' => 'Limit velikosti'
     ],
     'shortcuts' => [

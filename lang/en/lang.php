@@ -7,7 +7,7 @@ return [
         'author' => 'Gergő Szabó'
     ],
     'error' => [
-        'text' => 'First of all you need to install the following plugin:',
+        'text' => 'First of all <b>you need to install and activate</b> the following plugin:',
         'plugin' => 'Wysiwyg Editors'
     ],
     'settings' => [
@@ -39,7 +39,7 @@ return [
             'text' => 'Text',
             'video' => 'Video'
         ],
-        'pieces' => '{0}pieces|{1}piece|[2,Inf]pieces',
+        'pieces' => 'piece|pieces',
         'limit' => 'Upload limit'
     ],
     'shortcuts' => [

@@ -4,13 +4,13 @@
     </div>
 <?php
 
-use System\Classes\PluginManager;
 use Backend\Models\UserPreferences;
+use System\Classes\PluginManager;
 
 $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
-$stat = $this->fm_stat();
+$stat = $this->fmStat();
 
-if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors')):
+if (PluginManager::instance()->exists('AnandPatel.WysiwygEditors')):
 
     if (!isset($preferences['fm_hide_stat']) || !$preferences['fm_hide_stat']):
 
@@ -28,8 +28,8 @@ if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors')):
         </div>
         <div class="scoreboard-item title-value">
             <h4><?= e(trans('indikator.filemanager::lang.widget.basic.size')) ?></h4>
-            <p><?= $this->fm_size($stat['size']) ?></p>
-            <p class="description"><?= $this->fm_size($stat['size'], true) ?></p>
+            <p><?= $this->fmSize($stat['size']) ?></p>
+            <p class="description"><?= $this->fmSize($stat['size'], true) ?></p>
         </div>
         <div class="scoreboard-item title-value">
             <h4><?= e(trans('indikator.filemanager::lang.widget.limit')) ?></h4>
@@ -112,6 +112,6 @@ if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors')):
     </div></p>
     <?php endif; ?>
 <?php else: ?>
-    <p><?= e(trans('indikator.filemanager::lang.error.text')) ?> <a href="https://octobercms.com/plugin/anandpatel-wysiwygeditors" target="_blank"><?= e(trans('indikator.filemanager::lang.error.plugin')) ?></a></p>
+    <p><?= str_replace(array('&lt;b&gt;', '&lt;/b&gt;'), array('<strong>', '</strong>'), e(trans('indikator.filemanager::lang.error.text'))) ?> <a href="https://octobercms.com/plugin/anandpatel-wysiwygeditors" target="_blank"><?= e(trans('indikator.filemanager::lang.error.plugin')) ?></a></p>
 <?php endif; ?>
 </div>

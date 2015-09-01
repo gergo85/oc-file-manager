@@ -3,5 +3,5 @@
 # ===================================
 
 title: indikator.filemanager::lang.plugin.name
-list: @/plugins/indikator/filemanager/models/index/columns.yaml
+list: ~/plugins/indikator/filemanager/models/index/columns.yaml
 modelClass: Indikator\Filemanager\Models\Index

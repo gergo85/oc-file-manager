@@ -4,7 +4,7 @@ use Backend\Models\UserPreferences;
 $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
 
 if (!function_exists('fm_stat1')) {
-    function fm_stat1($folder = 'storage/app')
+    function fmStat1($folder = 'storage/app')
     {
         $attr['size'] = $attr['files'] = $attr['folders'] = 0;
 
@@ -16,7 +16,7 @@ if (!function_exists('fm_stat1')) {
         foreach ($elementents as $element) {
             if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb') {
                 if (filetype($folder.'/'.$element) == 'dir') {
-                    $value = fm_stat1($folder.'/'.$element);
+                    $value = fmStat1($folder.'/'.$element);
                     $attr['size'] += $value['size'];
                     $attr['files'] += $value['files'];
                     $attr['folders'] += $value['folders'] + 1;
@@ -34,7 +34,7 @@ if (!function_exists('fm_stat1')) {
 }
 
 if (!function_exists('fm_size1')) {
-    function fm_size1($size = 0)
+    function fmSize1($size = 0)
     {
         if ($size > 0) {
             $name = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
@@ -42,8 +42,13 @@ if (!function_exists('fm_size1')) {
 
             for ($i = 0; $size >= 1024; $i++) {
                 $size /= 1024;
-                if ($i < 1) $size = round($size, 0);
-                else $size = round($size, 1);
+
+                if ($i < 1) {
+                    $size = round($size, 0);
+                }
+                else {
+                    $size = round($size, 1);
+                }
             }
 
             global $preferences;
@@ -61,28 +66,32 @@ if (!function_exists('fm_size1')) {
     }
 }
 
-$stat = fm_stat1();
+$stat = fmStat1();
 
 ?>
 <div class="report-widget">
     <h3 style="margin-bottom:5px;"><?= e(trans($this->property('title'))) ?></h3>
+
     <?php if ($this->property('folders')): ?>
     <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
         <h4><?= e(trans('indikator.filemanager::lang.widget.basic.folders')) ?></h4>
         <p class="text-center"><?= $stat['folders'] ?></p>
     </div>
     <?php endif ?>
+
     <?php if ($this->property('files')): ?>
     <div class="scoreboard-item title-value pull-left" style="margin:20px 20px 0 0;">
         <h4><?= e(trans('indikator.filemanager::lang.widget.basic.files')) ?></h4>
         <p class="text-center"><?= $stat['files'] ?></p>
     </div>
     <?php endif ?>
+
     <?php if ($this->property('size')): ?>
     <div class="scoreboard-item title-value pull-left" style="margin:20px 0 0 0;">
         <h4><?= e(trans('indikator.filemanager::lang.widget.basic.size')) ?></h4>
-        <p class="text-center"><?= fm_size1($stat['size']) ?></p>
+        <p class="text-center"><?= fmSize1($stat['size']) ?></p>
     </div>
     <?php endif ?>
+
     <div style="clear:both;"></div>
 </div>

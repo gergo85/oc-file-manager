@@ -4,7 +4,7 @@ use Backend\Models\UserPreferences;
 $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
 
 if (!function_exists('fm_stat2')) {
-    function fm_stat2($folder = 'storage/app')
+    function fmStat2($folder = 'storage/app')
     {
         $attr['size_audio'] = $attr['size_archive'] = $attr['size_code'] = $attr['size_doc'] = $attr['size_image'] = $attr['size_other'] = $attr['size_prezi'] = $attr['size_table'] = $attr['size_text'] = $attr['size_video'] = 0;
         $attr['file_audio'] = $attr['file_archive'] = $attr['file_code'] = $attr['file_doc'] = $attr['file_image'] = $attr['file_other'] = $attr['file_prezi'] = $attr['file_table'] = $attr['file_text'] = $attr['file_video'] = 0;
@@ -17,7 +17,7 @@ if (!function_exists('fm_stat2')) {
         foreach ($elementents as $element) {
             if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb') {
                 if (filetype($folder.'/'.$element) == 'dir') {
-                    $value = fm_stat2($folder.'/'.$element);
+                    $value = fmStat2($folder.'/'.$element);
                     $attr['size_audio'] += $value['size_audio'];
                     $attr['size_archive'] += $value['size_archive'];
                     $attr['size_code'] += $value['size_code'];
@@ -51,7 +51,7 @@ if (!function_exists('fm_stat2')) {
 }
 
 if (!function_exists('fm_size2')) {
-    function fm_size2($size = 0)
+    function fmSize2($size = 0)
     {
         if ($size > 0) {
             $name = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
@@ -59,8 +59,13 @@ if (!function_exists('fm_size2')) {
 
             for ($i = 0; $size >= 1024; $i++) {
                 $size /= 1024;
-                if ($i < 1) $size = round($size, 0);
-                else $size = round($size, 1);
+
+                if ($i < 1) {
+                    $size = round($size, 0);
+                }
+                else {
+                    $size = round($size, 1);
+                }
             }
 
             global $preferences;
@@ -94,18 +99,21 @@ if (!function_exists('fm_type')) {
         ];
 
         foreach ($types as $type => $extensions) {
-            if (in_array($extension, $extensions)) return $type;
+            if (in_array($extension, $extensions)) {
+                return $type;
+            }
         }
 
         return 'other';
     }
 }
 
-$stat = fm_stat2();
+$stat = fmStat2();
 
 ?>
 <div class="report-widget">
     <h3 style="margin-bottom:5px;"><?= e(trans($this->property('title'))) ?></h3>
+ 
     <div class="scoreboard-item title-value" style="margin:25px 0 -25px 0;">
         <div data-control="toolbar">
             <div class="scoreboard-item control-chart pull-left" data-control="chart-pie" style="margin:0 45px 10px 0;">
@@ -115,6 +123,7 @@ $stat = fm_stat2();
                     <li data-color="#d04424"><?= e(trans('indikator.filemanager::lang.widget.type.prezi')) ?> <span><?= $stat['file_prezi'] ?></span></li>
                 </ul>
             </div>
+
             <div class="scoreboard-item control-chart pull-left" data-control="chart-pie" style="margin:0 45px 10px 0;">
                 <ul>
                     <li data-color="#95b753"><?= e(trans('indikator.filemanager::lang.widget.type.image')) ?> <span><?= $stat['file_image'] ?></span></li>
@@ -122,6 +131,7 @@ $stat = fm_stat2();
                     <li data-color="#30b4da"><?= e(trans('indikator.filemanager::lang.widget.type.audio')) ?> <span><?= $stat['file_audio'] ?></span></li>
                 </ul>
             </div>
+
             <div class="scoreboard-item control-chart pull-left" data-control="chart-pie" style="margin:0 45px 10px 0;">
                 <ul>
                     <li data-color="#ac5e91"><?= e(trans('indikator.filemanager::lang.widget.type.text')) ?> <span><?= $stat['file_text'] ?></span></li>

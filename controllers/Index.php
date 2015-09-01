@@ -38,7 +38,7 @@ class Index extends Controller
         BackendMenu::setContext('Indikator.Filemanager', 'pages');
     }
 
-    public function fm_stat($folder = 'storage/app')
+    public function fmStat($folder = 'storage/app')
     {
         $attr['size'] = $attr['files'] = $attr['folders'] = 0;
         $attr['audio'] = $attr['archive'] = $attr['code'] = $attr['doc'] = $attr['image'] = $attr['other'] = $attr['prezi'] = $attr['table'] = $attr['text'] = $attr['video'] = 0;
@@ -51,7 +51,7 @@ class Index extends Controller
         foreach ($elementents as $element) {
             if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb') {
                 if (File::type($folder.'/'.$element) == 'dir') {
-                    $value = $this->fm_stat($folder.'/'.$element);
+                    $value = $this->fmStat($folder.'/'.$element);
                     $attr['size'] += $value['size'];
                     $attr['files'] += $value['files'];
                     $attr['folders'] += $value['folders'] + 1;
@@ -69,7 +69,7 @@ class Index extends Controller
                 else {
                     $attr['size'] += File::size($folder.'/'.$element);
                     $attr['files']++;
-                    $attr[$this->fm_type(substr(strrchr($element, '.'), 1))]++;
+                    $attr[$this->fmType(substr(strrchr($element, '.'), 1))]++;
                 }
             }
         }
@@ -77,7 +77,7 @@ class Index extends Controller
         return $attr;
     }
 
-    public function fm_size($size = 0, $sizename = false)
+    public function fmSize($size = 0, $sizename = false)
     {
         if ($size > 0) {
             $name = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
@@ -85,24 +85,39 @@ class Index extends Controller
 
             for ($i = 0; $size >= 1024; $i++) {
                 $size /= 1024;
-                if ($i < 1) $size = round($size, 0);
-                else $size = round($size, 1);
+
+                if ($i < 1) {
+                    $size = round($size, 0);
+                }
+                else {
+                    $size = round($size, 1);
+                }
             }
 
             global $preferences;
-            if (!in_array($preferences['locale'], $common)) $size = str_replace('.', ',', $size);
-            if ($sizename) $size = $name[$i];
+
+            if (!in_array($preferences['locale'], $common)) {
+                $size = str_replace('.', ',', $size);
+            }
+
+            if ($sizename) {
+                $size = $name[$i];
+            }
 
             return $size;
         }
 
-        if ($sizename) $size = 'B';
-        else $size = 0;
+        if ($sizename) {
+            $size = 'B';
+        }
+        else {
+            $size = 0;
+        }
 
         return $size;
     }
 
-    public function fm_type($extension = 'txt')
+    public function fmType($extension = 'txt')
     {
         $types = [
             'audio'   => ['aac', 'ac3',  'aif',  'm3a',  'm4a',  'm4b',  'mka',  'mp1', 'mp2',  'mp3',  'ogg', 'oga', 'ram', 'wav', 'wma'],
@@ -117,7 +132,9 @@ class Index extends Controller
         ];
 
         foreach ($types as $type => $extensions) {
-            if (in_array($extension, $extensions)) return $type;
+            if (in_array($extension, $extensions)) {
+                return $type;
+            }
         }
 
         return 'other';
