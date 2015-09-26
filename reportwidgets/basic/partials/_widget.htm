@@ -1,18 +1,15 @@
 <?php
 
-use Backend\Models\UserPreferences;
-$preferences = UserPreferences::forUser()->get('backend::backend.preferences');
-
 if (!function_exists('fm_stat1')) {
     function fmStat1($folder = 'storage/app')
     {
-        $attr['size'] = $attr['files'] = $attr['folders'] = 0;
-
         if (!File::exists($folder)) {
             File::makeDirectory($folder, 0775, true);
         }
 
+        $attr['size'] = $attr['files'] = $attr['folders'] = 0;
         $elementents = scandir($folder);
+
         foreach ($elementents as $element) {
             if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb') {
                 if (filetype($folder.'/'.$element) == 'dir') {
@@ -51,9 +48,7 @@ if (!function_exists('fm_size1')) {
                 }
             }
 
-            global $preferences;
-
-            if (!in_array($preferences['locale'], $common)) {
+            if (!in_array(App::getLocale(), $common)) {
                 $size = str_replace('.', ',', $size);
             }
 

@@ -1,7 +1,4 @@
 <div class="scoreboard">
-    <div class="container-flush">
-        <?= $this->makeHintPartial('indikator_filemanager_hint', 'hint') ?>
-    </div>
 <?php
 
 use Backend\Models\UserPreferences;
@@ -9,12 +6,16 @@ use System\Classes\PluginManager;
 
 $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
 $stat = $this->fmStat();
+$locale = App::getLocale();
 
 if (PluginManager::instance()->exists('AnandPatel.WysiwygEditors')):
 
     if (!isset($preferences['fm_hide_stat']) || !$preferences['fm_hide_stat']):
 
 ?>
+    <div class="container-flush">
+        <?= $this->makeHintPartial('indikator_filemanager_hint', 'hint') ?>
+    </div>
     <div data-control="toolbar">
         <div class="scoreboard-item title-value">
             <h4><?= e(trans('indikator.filemanager::lang.widget.basic.folders')) ?></h4>
@@ -62,8 +63,8 @@ if (PluginManager::instance()->exists('AnandPatel.WysiwygEditors')):
     <script type="text/javascript">
     $().ready(function() {
         $('#elfinder').elfinder({
-            <?php if ($preferences['locale'] != 'en' && File::exists('plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$preferences['locale'].'.js')): ?>
-            lang: '<?= $preferences['locale'] ?>',
+            <?php if ($locale != 'en' && File::exists('plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$locale.'.js')): ?>
+            lang: '<?= $locale ?>',
             <?php endif; ?>
             url: '<?= URL::action('Barryvdh\Elfinder\ElfinderController@showConnector') ?>'
         }).elfinder('instance');

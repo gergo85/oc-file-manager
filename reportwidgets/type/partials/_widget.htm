@@ -1,19 +1,16 @@
 <?php
 
-use Backend\Models\UserPreferences;
-$preferences = UserPreferences::forUser()->get('backend::backend.preferences');
-
 if (!function_exists('fm_stat2')) {
     function fmStat2($folder = 'storage/app')
     {
-        $attr['size_audio'] = $attr['size_archive'] = $attr['size_code'] = $attr['size_doc'] = $attr['size_image'] = $attr['size_other'] = $attr['size_prezi'] = $attr['size_table'] = $attr['size_text'] = $attr['size_video'] = 0;
-        $attr['file_audio'] = $attr['file_archive'] = $attr['file_code'] = $attr['file_doc'] = $attr['file_image'] = $attr['file_other'] = $attr['file_prezi'] = $attr['file_table'] = $attr['file_text'] = $attr['file_video'] = 0;
-
         if (!File::exists($folder)) {
             File::makeDirectory($folder, 0775, true);
         }
 
+        $attr['size_audio'] = $attr['size_archive'] = $attr['size_code'] = $attr['size_doc'] = $attr['size_image'] = $attr['size_other'] = $attr['size_prezi'] = $attr['size_table'] = $attr['size_text'] = $attr['size_video'] = 0;
+        $attr['file_audio'] = $attr['file_archive'] = $attr['file_code'] = $attr['file_doc'] = $attr['file_image'] = $attr['file_other'] = $attr['file_prezi'] = $attr['file_table'] = $attr['file_text'] = $attr['file_video'] = 0;
         $elementents = scandir($folder);
+
         foreach ($elementents as $element) {
             if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb') {
                 if (filetype($folder.'/'.$element) == 'dir') {
@@ -68,9 +65,7 @@ if (!function_exists('fm_size2')) {
                 }
             }
 
-            global $preferences;
-
-            if (!in_array($preferences['locale'], $common)) {
+            if (!in_array(App::getLocale(), $common)) {
                 $size = str_replace('.', ',', $size);
             }
 
@@ -113,7 +108,7 @@ $stat = fmStat2();
 ?>
 <div class="report-widget">
     <h3 style="margin-bottom:5px;"><?= e(trans($this->property('title'))) ?></h3>
- 
+
     <div class="scoreboard-item title-value" style="margin:25px 0 -25px 0;">
         <div data-control="toolbar">
             <div class="scoreboard-item control-chart pull-left" data-control="chart-pie" style="margin:0 45px 10px 0;">
