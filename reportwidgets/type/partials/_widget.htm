@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('fm_stat2')) {
+if (!function_exists('fmStat2')) {
     function fmStat2($folder = 'storage/app')
     {
         if (!File::exists($folder)) {
@@ -36,7 +36,7 @@ if (!function_exists('fm_stat2')) {
                 }
 
                 else {
-                    $type = fm_type(substr(strrchr($element, '.'), 1));
+                    $type = fmType(substr(strrchr($element, '.'), 1));
                     $attr['size_'.$type] += File::size($folder.'/'.$element);
                     $attr['file_'.$type]++;
                 }
@@ -47,11 +47,11 @@ if (!function_exists('fm_stat2')) {
     }
 }
 
-if (!function_exists('fm_size2')) {
+if (!function_exists('fmSize2')) {
     function fmSize2($size = 0)
     {
         if ($size > 0) {
-            $name = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+            $name = ['B', 'KB', 'MB', 'GB', 'TB'];
             $common = ['au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw'];
 
             for ($i = 0; $size >= 1024; $i++) {
@@ -78,8 +78,8 @@ if (!function_exists('fm_size2')) {
     }
 }
 
-if (!function_exists('fm_type')) {
-    function fm_type($extension = 'txt')
+if (!function_exists('fmType')) {
+    function fmType($extension = 'txt')
     {
         $types = [
             'audio'   => ['aac', 'ac3',  'aif',  'm3a',  'm4a',  'm4b',  'mka',  'mp1', 'mp2',  'mp3',  'ogg', 'oga', 'ram', 'wav', 'wma'],

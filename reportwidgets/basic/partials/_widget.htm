@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('fm_stat1')) {
+if (!function_exists('fmStat1')) {
     function fmStat1($folder = 'storage/app')
     {
         if (!File::exists($folder)) {
@@ -30,11 +30,11 @@ if (!function_exists('fm_stat1')) {
     }
 }
 
-if (!function_exists('fm_size1')) {
+if (!function_exists('fmSize1')) {
     function fmSize1($size = 0)
     {
         if ($size > 0) {
-            $name = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+            $name = ['B', 'KB', 'MB', 'GB', 'TB'];
             $common = ['au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw'];
 
             for ($i = 0; $size >= 1024; $i++) {

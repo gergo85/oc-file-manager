@@ -40,14 +40,14 @@ class Index extends Controller
 
     public function fmStat($folder = 'storage/app')
     {
-        $attr['size'] = $attr['files'] = $attr['folders'] = 0;
-        $attr['audio'] = $attr['archive'] = $attr['code'] = $attr['doc'] = $attr['image'] = $attr['other'] = $attr['prezi'] = $attr['table'] = $attr['text'] = $attr['video'] = 0;
-
         if (!File::exists($folder)) {
             File::makeDirectory($folder, 0775, true);
         }
 
+        $attr['size'] = $attr['files'] = $attr['folders'] = 0;
+        $attr['audio'] = $attr['archive'] = $attr['code'] = $attr['doc'] = $attr['image'] = $attr['other'] = $attr['prezi'] = $attr['table'] = $attr['text'] = $attr['video'] = 0;
         $elementents = scandir($folder);
+
         foreach ($elementents as $element) {
             if ($element != '.' && $element != '..' && $element != '.quarantine' && $element != '.tmb') {
                 if (File::type($folder.'/'.$element) == 'dir') {
@@ -80,7 +80,7 @@ class Index extends Controller
     public function fmSize($size = 0, $sizename = false)
     {
         if ($size > 0) {
-            $name = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+            $name = ['B', 'KB', 'MB', 'GB', 'TB'];
             $common = ['au', 'bn', 'bw', 'ch', 'cn', 'do', 'eg', 'gt', 'hk', 'hn', 'ie', 'il', 'in', 'jp', 'ke', 'kp', 'kr', 'lb', 'lk', 'mn', 'mo', 'mt', 'mx', 'my', 'ng', 'ni', 'np', 'nz', 'pa', 'ph', 'pk', 'sg', 'th', 'tw', 'tz', 'ug', 'uk', 'us', 'zw'];
 
             for ($i = 0; $size >= 1024; $i++) {
