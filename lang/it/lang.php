@@ -14,7 +14,7 @@ return [
         'tooltip2' => 'Se vuoi nascondere anche il link Media nel menù in alto, scarica dall\'October Marketplace il plugin <b>Backend Plus</b>.',
         'tooltip3' => 'Per favore <b>dai una valutazione a questo plugin</b> se ti ha aiutato nel tuo lavoro:',
         'hide_stat' => 'Nascondi le statistiche del plugin File Manager.',
-        'hide_help' => 'Nascondi l'aiuto del plugin File Manager.'
+        'hide_help' => 'Nascondi l\'aiuto del plugin File Manager.'
     ],
     'widget' => [
         'basic' => [
