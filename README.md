@@ -35,7 +35,7 @@ Manage simple your files and folders via [elFinder](http://elfinder.org).
 1. Click on the __Install Plugins__ button.
 1. Type the __File Manager__ in search field.
 
-__This plugin works only with [Wysiwyg Editors](https://octobercms.com/plugin/anandpatel-wysiwygeditors) v1.2.0 or older version!__ Firstly you need to install it.
+__This plugin works only with [Wysiwyg Editors](https://octobercms.com/plugin/anandpatel-wysiwygeditors) v1.2.0 or older version!__
 
 
 ###Credits
