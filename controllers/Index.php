@@ -1,8 +1,8 @@
 <?php namespace Indikator\Filemanager\Controllers;
 
 use Backend\Classes\Controller;
-use Backend\Models\UserPreferences;
 use System\Classes\PluginManager;
+use App;
 use BackendMenu;
 use File;
 
@@ -20,7 +20,7 @@ class Index extends Controller
     {
         parent::__construct();
 
-        $preferences = UserPreferences::forUser()->get('backend::backend.preferences');
+        $locale = App::getLocale();
 
         if (PluginManager::instance()->hasPlugin('AnandPatel.WysiwygEditors')) {
             $this->addCss('http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css');
@@ -30,8 +30,8 @@ class Index extends Controller
             $this->addJs('http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
             $this->addJs('/plugins/anandpatel/wysiwygeditors/resources/assets/js/elfinder.min.js');
 
-            if ($preferences['locale'] != 'en' && File::exists('plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$preferences['locale'].'.js')) {
-                $this->addJs('/plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$preferences['locale'].'.js');
+            if ($locale != 'en' && File::exists('plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$locale.'.js')) {
+                $this->addJs('/plugins/anandpatel/wysiwygeditors/resources/assets/js/i18n/elfinder.'.$locale.'.js');
             }
         }
 
@@ -94,9 +94,7 @@ class Index extends Controller
                 }
             }
 
-            global $preferences;
-
-            if (!in_array($preferences['locale'], $common)) {
+            if (!in_array(App::getLocale(), $common)) {
                 $size = str_replace('.', ',', $size);
             }
 
