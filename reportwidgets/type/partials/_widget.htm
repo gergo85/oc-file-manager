@@ -109,6 +109,7 @@ $stat = fmStat2();
 <div class="report-widget">
     <h3 style="margin-bottom:5px;"><?= e(trans($this->property('title'))) ?></h3>
 
+<?php if (!isset($error)): ?>
     <div class="scoreboard-item title-value" style="margin:25px 0 -25px 0;">
         <div data-control="toolbar">
             <div class="scoreboard-item control-chart pull-left" data-control="chart-pie" style="margin:0 45px 10px 0;">
@@ -136,4 +137,8 @@ $stat = fmStat2();
             </div>
         </div>
     </div>
+
+<?php else: ?>
+    <p class="flash-message static warning"><?= e($error) ?></p>
+<?php endif ?>
 </div>

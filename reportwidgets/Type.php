@@ -1,11 +1,19 @@
 <?php namespace Indikator\Filemanager\ReportWidgets;
 
 use Backend\Classes\ReportWidgetBase;
+use Exception;
 
 class Type extends ReportWidgetBase
 {
     public function render()
     {
+        try {
+            $this->loadData();
+        }
+        catch (Exception $ex) {
+            $this->vars['error'] = $ex->getMessage();
+        }
+
         return $this->makePartial('widget');
     }
 
